@@ -12,7 +12,7 @@ class EnvironmentModule extends AbstractModule
   {
     bind(classOf[ServiceInformation]).toInstance(ServiceInformation())
     bind(classOf[TinyUrlDao]).to(classOf[SlickTinyUrlDao])
-    bind(classOf[UrlKeyGenerationService]).toInstance(RandomUrlKeyGenerationService)
+    bind(classOf[UrlKeyGenerationService]).to(classOf[RandomUrlKeyGenerationService])
     bind(classOf[TinyUrlService]).to(classOf[TinyUrlServiceImpl])
   }
 }
