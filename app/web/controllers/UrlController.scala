@@ -2,8 +2,8 @@ package web.controllers
 
 import javax.inject.{Inject, Singleton}
 import play.api.libs.json.{JsValue, Json}
-import play.api.mvc.{AbstractController, Action, ControllerComponents, PlayBodyParsers}
-import services.TinyUrlService
+import play.api.mvc._
+import services.tiny.TinyUrlService
 import utils.RequestUtils.parseRequest
 import web.requests.CreateTinyUrlRequest
 
@@ -26,5 +26,13 @@ class UrlController @Inject()(
           tinyUrl <- tinyUrlService.insert(createTinyUrlRequest)
         }
         yield Created(Json.toJson(tinyUrl))
+    }
+
+  def fetchUrl(key: String): Action[AnyContent] =
+    Action.async {
+      for {
+        tinyUrl <- tinyUrlService.get(key)
+      }
+      yield Redirect(tinyUrl.longUrl)
     }
 }

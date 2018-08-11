@@ -1,4 +1,4 @@
-package services
+package services.tiny
 
 import models.TinyUrl
 import web.requests.CreateTinyUrlRequest

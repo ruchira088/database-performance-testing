@@ -3,4 +3,8 @@
 # https://www.playframework.com/documentation/latest/ScalaRouting
 # ~~~~
 
-POST    /tiny-url       web.controllers.UrlController.createTinyUrl()
+GET     /service-info       web.controllers.InfoController.serviceInfo()
+
+POST    /tiny-url           web.controllers.UrlController.createTinyUrl()
+
+GET     /tiny-url/:key      web.controllers.UrlController.fetchUrl(key)

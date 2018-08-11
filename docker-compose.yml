@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  application:
+    build: .
+    tty: true
+    depends_on:
+      - postgres-database
+    environment:
+      POSTGRES_PASSWORD: postgres_password
+      POSTGRES_USER: postgres_user
+      POSTGRES_URL: jdbc:postgresql://postgres-database:5432/db-performance-app
+    ports:
+      - 9000:9000
+      - 5005:5005
+    volumes:
+      - "~/.sbt:/root/.sbt"
+      - "~/.ivy2:/root/.ivy2"
+      - ".:/opt/database-performance-testing"
+      - "/opt/database-performance-testing/target"
+      - "/opt/database-performance-testing/project/target"
+      - "/root/.sbt/1.0/plugins"
+
+  postgres-database:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: postgres_password
+      POSTGRES_USER: postgres_user
+      POSTGRES_DB: db-performance-app
