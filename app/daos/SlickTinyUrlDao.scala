@@ -27,11 +27,11 @@ class SlickTinyUrlDao @Inject()(val dbConfigProvider: DatabaseConfigProvider)
         timeStamp => new DateTime(timeStamp.getTime)
       )
 
-    def key: Rep[String] = column[String]("url_key", O.PrimaryKey)
+    def key: Rep[String] = column[String]("key", O.PrimaryKey)
     def createdAt: Rep[DateTime] = column[DateTime]("created_at")
-    def longUrl: Rep[String] = column[String]("long_url")
+    def url: Rep[String] = column[String]("url")
 
-    override def * : ProvenShape[TinyUrl] = (key, createdAt, longUrl) <> (TinyUrl.apply _ tupled, TinyUrl.unapply)
+    override def * : ProvenShape[TinyUrl] = (key, createdAt, url) <> (TinyUrl.apply _ tupled, TinyUrl.unapply)
   }
 
   val tinyUrlTable = TableQuery[TinyUrls]

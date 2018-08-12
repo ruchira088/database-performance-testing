@@ -4,7 +4,7 @@ import json.JsonFormats.JodaTimeFormat
 import org.joda.time.DateTime
 import play.api.libs.json.{Json, OFormat}
 
-case class TinyUrl(key: String, createdAt: DateTime, longUrl: String)
+case class TinyUrl(key: String, createdAt: DateTime, url: String)
 
 object TinyUrl
 {

@@ -33,6 +33,6 @@ class UrlController @Inject()(
       for {
         tinyUrl <- tinyUrlService.get(key)
       }
-      yield Redirect(tinyUrl.longUrl)
+      yield Redirect(tinyUrl.url)
     }
 }
