@@ -16,4 +16,4 @@ EXPOSE 9000 5005
 
 ENTRYPOINT ["sbt"]
 
-CMD ["-jvm-debug", "5005", "run"]
+CMD ["-jvm-debug", "5005", "runWithPostgres"]
